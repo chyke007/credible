@@ -79,6 +79,22 @@
                                                 <div class="form-group">
                                                     <label
                                                         class="black"
+                                                        for="sname"
+                                                        >Referral code (Leave
+                                                        blank if none)</label
+                                                    >
+                                                    <input
+                                                        v-model="referral"
+                                                        type="text"
+                                                        class="form-control"
+                                                        id="referral"
+                                                        placeholder="Enter referral code here"
+                                                        required
+                                                    />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label
+                                                        class="black"
                                                         for="password"
                                                         >Password</label
                                                     >
@@ -157,7 +173,8 @@ export default {
             fname: "",
             sname: "",
             password: "",
-            rpassword: ""
+            rpassword: "",
+            referral: ""
         };
     },
 
@@ -236,6 +253,7 @@ export default {
                 password: this.password,
                 first_name: this.fname,
                 last_name: this.sname,
+                referral: this.referral
             };
 
             let res = await this.loadData(
@@ -246,10 +264,7 @@ export default {
             this.hideLoader();
             if (!res) return;
 
-            this.$toastr.s(
-                "You can now log in",
-                "Success"
-            );
+            this.$toastr.s("You can now log in", "Success");
             this.$router.push("/login");
         },
         ...mapActions(["set_user_detail_ac", "set_user_token_ac"])

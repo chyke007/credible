@@ -7,6 +7,9 @@ import Register from "@/js/views/Register";
 
 //Secured routes
 import Dashboard from "@/js/views/Dashboard";
+import Transfer from "@/js/views/Transfer";
+import Profile from "@/js/views/Profile";
+import Approve from "@/js/views/Approve";
 
 //Officers
 // import Payment from '@/js/Views/Payment'
@@ -52,6 +55,32 @@ const router = new VueRouter({
             meta: {
                 auth: true
                 // requiresAdmin: true
+            }
+        },
+        {
+            path: "/transfer",
+            name: "transfer",
+            component: Transfer,
+            meta: {
+                auth: true
+            }
+        },
+        {
+            path: "/profile",
+            name: "profile",
+            component: Profile,
+            meta: {
+                auth: true,
+                requiresUser: true
+            }
+        },
+        {
+            path: "/approve",
+            name: "approve",
+            component: Approve,
+            meta: {
+                auth: true,
+                requiresAdmin: true
             }
         },
         {
@@ -102,7 +131,7 @@ router.beforeEach((to, from, next) => {
     }
 
     if (to.matched.some(record => record.meta.requiresUser)) {
-        if (Store.state.credpal.user_type == "USER") {
+        if (Store.state.credpal.user_role === 2) {
             next();
         } else {
             next("/dashboard");

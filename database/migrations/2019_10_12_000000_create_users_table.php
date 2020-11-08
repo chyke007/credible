@@ -24,8 +24,12 @@ class CreateUsersTable extends Migration
             $table->integer('wallet')->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('identity')->default('');
+            $table->string('accountNumber')->default('');
+            $table->string('accountName')->default('');
+            $table->string('bank')->default('');
             $table->dateTime('last_login')->nullable();
-            $table->boolean('admin_right')->default(false);
+            $table->boolean('valid')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

@@ -40,6 +40,8 @@ export const auth = {
                     "Content-Type": "application/json"
                 }
             }).catch(err => {
+                this.hideLoader();
+
                 if (err.response.status == 402) {
                     this.set_user_token_ac(null);
                     this.$router.push("/login");

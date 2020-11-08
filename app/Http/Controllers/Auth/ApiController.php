@@ -12,16 +12,15 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+
+use App\Traits\FormatResult;
 use Validator;
 use Symfony\Component\HttpFoundation\Response;
 
 class ApiController extends Controller
 {
-
-    public function formatResult($val, $error=false){
-        if (!$error) return ["data" => $val];
-        return ["errors" => $val];
-    }
+    use FormatResult;
+    
     /**
      * Handles Registration Request
      *
@@ -51,7 +50,7 @@ class ApiController extends Controller
         }
         $user->save();
         
-        return response()->json($this->formatResult(['success' => true, 'message' => 'Account successfully created']), Response::HTTP_OK);
+        return response()->json($this->FormatResult(['success' => true, 'message' => 'Account successfully created']), Response::HTTP_OK);
     }
  
     /**
@@ -75,13 +74,13 @@ class ApiController extends Controller
         $userEmail = User::where('email',$request['email'])->get();
         
         if(count($userEmail) < 1){
-            return response()->json($this->formatResult([
+            return response()->json($this->FormatResult([
                 'message' => 'account not found',
                 'code' => 610
             ],true), Response::HTTP_UNAUTHORIZED);
         }else if(!Auth::attempt($credentials)){
            
-            return response()->json($this->formatResult([
+            return response()->json($this->FormatResult([
                 'message' => 'invalid credentials',
                 'code' => 611
             ],true), Response::HTTP_UNAUTHORIZED);
@@ -101,7 +100,7 @@ class ApiController extends Controller
         }
 
         $token->save();
-        return response()->json($this->formatResult([
+        return response()->json($this->FormatResult([
         	'success' => true,
             'token' => $tokenResult->accessToken,
             'user' => $request->user()

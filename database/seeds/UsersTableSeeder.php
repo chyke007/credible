@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use Illuminate\Support\Str;
 class UsersTableSeeder extends Seeder
 {
     /**
@@ -13,19 +13,29 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->insert([
             'role_id' => 1,
-            'full_name' => 'CredPal',
-            'last_name' => 'Yaba',
-            'email' => 'info@zercomsystems.com',
-            'admin_right' => 1,
-            'password' => bcrypt('credpal')
+            'first_name' => 'CredPal',
+            'last_name' => 'User',
+            'email' => 'user@credpal.com',
+            'password' => bcrypt('credpal'),
+            'referral_code' => Str::random(6),
+            'wallet' => 50000,
+            'identity' => '',
+            'accountNumber' => '30484993043',
+            'accountName'=>'CredPal limited',
+            'valid' => 0
         ]); 
         DB::table('users')->insert([
-            'role_id' => 2,
-            'full_name' => 'Chibuike',
-            
-            'last_name' => 'Nwachukwu',
-            'email' => 'work@chibuikenwa.com',
-            'password' => bcrypt('chibuike')
+            'role_id' => 1,
+            'first_name' => 'CredPal',
+            'last_name' => 'Admin',
+            'email' => 'admin@credpal.com',
+            'password' => bcrypt('credpal'),
+            'referral_code' => Str::random(6),
+            'wallet' => 0,
+            'identity' => '',
+            'accountNumber' => '',
+            'accountName'=>'',
+            'valid' => 0
         ]); 
     }
 }

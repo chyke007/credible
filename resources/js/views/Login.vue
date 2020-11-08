@@ -228,7 +228,13 @@ export default {
                 first_name: res.data.user.first_name,
                 last_name: res.data.user.last_name,
                 referral_code: res.data.user.referral_code,
-                email: res.data.user.email
+                email: res.data.user.email,
+                identity: res.data.user.identity,
+                valid: res.data.user.valid,
+                wallet: res.data.user.wallet,
+                accountNumber: res.data.user.accountNumber,
+                accountName: res.data.user.accountName,
+                bank: res.data.user.bank
             });
             this.$router.push("/dashboard");
             return this.$toastr.s("Logged in", "Success");

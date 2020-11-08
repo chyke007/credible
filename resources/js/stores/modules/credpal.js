@@ -40,6 +40,12 @@ const getters = {
     },
     get_user_name: state => {
         return `${state.user_detail.first_name} ${state.user_detail.last_name}`;
+    },
+    get_user_referral: state => {
+        return state.user_detail.referral_code;
+    },
+    get_user_progress: state => {
+        return state.user_detail.valid == 1 ? false : true;
     }
 };
 

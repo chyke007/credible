@@ -19,10 +19,24 @@
                 </router-link>
                 <router-link
                     v-if="get_user_role == 1"
+                    to="/approve"
+                    class="nav-item nav-link active"
+                >
+                    <span>Approve ID</span>
+                </router-link>
+                <router-link
+                    v-if="get_user_role == 2"
+                    to="/transfer"
+                    class="nav-item nav-link active"
+                >
+                    <span>Transfer Fund</span>
+                </router-link>
+                <router-link
+                    v-if="get_user_role == 2"
                     to="/profile"
                     class="nav-item nav-link active"
                 >
-                    <span>Profile</span>
+                    <span>Update Profile</span>
                 </router-link>
                 <a href="#" @click="logout" class="nav-item nav-link">Logout</a>
             </div>

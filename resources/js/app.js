@@ -21,6 +21,8 @@ import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
 Vue.use(ElementUI);
 
+//datatable
+Vue.use(require("bootstrap-vue-datatable"));
 import VueToastr from "vue-toastr";
 // use plugin
 Vue.use(VueToastr, {

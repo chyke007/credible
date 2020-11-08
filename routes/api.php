@@ -19,10 +19,11 @@ Route::post('register', 'Auth\ApiController@register');
 //Secured routes
 Route::group(['middleware' => 'auth:api'], function(){
     Route::get('logout', 'Auth\ApiController@logout');
+    Route::apiresource('user','UserController')->except(['show']);
  
     /** Super admin route **/
-    Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admin'],function(){
-        // Route::get('user', 'DashboardController@dashboard');
+    Route::group(['prefix' => 'admin', 'namespace' => 'Admin'],function(){
+       
     });
  
 });

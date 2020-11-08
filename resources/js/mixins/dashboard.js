@@ -10,7 +10,7 @@ export const dashboard = {
             profilePlaceholder: "UPDATE",
             manualPlaceholder: "SUBSCRIBE USER",
             URL: `${appUrl}`,
-            GETALLUSERS: `${appUrl}/user/all?perpage=1000&q=accountType:USER`
+            PROFILEURL: `${appUrl}/user/`
         };
     },
     filters: {
@@ -33,9 +33,40 @@ export const dashboard = {
     methods: {
         showLoader() {
             this.loading = true;
+            this.profilePlaceholder = "Loading ... Please wait.";
         },
         hideLoader() {
             this.loading = false;
+            this.profilePlaceholder = "UPDATE";
+        },
+        formatMoney(amount, decimalCount = 2, decimal = ".", thousands = ",") {
+            try {
+                decimalCount = Math.abs(decimalCount);
+                decimalCount = isNaN(decimalCount) ? 2 : decimalCount;
+
+                const negativeSign = amount < 0 ? "-" : "";
+
+                let i = parseInt(
+                    (amount = Math.abs(Number(amount) || 0).toFixed(
+                        decimalCount
+                    ))
+                ).toString();
+                let j = i.length > 3 ? i.length % 3 : 0;
+
+                return (
+                    negativeSign +
+                    (j ? i.substr(0, j) + thousands : "") +
+                    i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousands) +
+                    (decimalCount
+                        ? decimal +
+                          Math.abs(amount - i)
+                              .toFixed(decimalCount)
+                              .slice(2)
+                        : "")
+                );
+            } catch (e) {
+                //console.log(e)
+            }
         },
 
         async loadData(url, requestBody, method) {
@@ -50,7 +81,9 @@ export const dashboard = {
                     "Content-Type": "application/json"
                 }
             }).catch(err => {
-                if (err.response.data.error.code == 1017) {
+                this.hideLoader();
+
+                if (err.response.status == 402) {
                     this.set_user_token_ac(null);
                     this.$router.push("/login");
                     return this.$toastr.e(
