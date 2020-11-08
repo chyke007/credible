@@ -2,6 +2,8 @@
 
 A full blown SPA built with Vue.js and Laravel for the CREDPAL online assessment
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![Build Status](https://travis-ci.org/chyke007/credible.svg?branch=master)](https://travis-ci.org/chyke007/credible)
+
 ## Getting Started
 
 -   Clone or download this repo
