@@ -7,10 +7,10 @@ use App\User;
 trait Transfer
 {
     
-    public function deductFromWallet($user, $amount){
-        if(!$user) $user = Auth::user();
+    public function deductFromWallet($id, $amount){
+        if(!$id) $id = Auth::user()->id;
         
-        $validUser = User::where('id',$user->id)->first();
+        $validUser = User::where('id',$id)->first();
             if($validUser){
 
                 $validUser ? $validUser-> wallet -= $amount : '';

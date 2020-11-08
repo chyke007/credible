@@ -54,6 +54,9 @@ npm run prod -- in production
 # Serve application
 php artisan serve
 
+# Run cron job
+## Please run this command below every minute using laravel scheduler or manually running the command everytime to simulate future transfer
+php artisan transfer:cron
 ```
 
 ### Default users

@@ -96,7 +96,7 @@ class TransferController extends Controller
             }
             if($request->mode == self::INSTANT){
                 $this->createTransfer($user->id,$request->amount,Carbon::now(),self::INSTANT,self::COMPLETED);
-                $this->deductFromWallet($user,$request->amount);
+                $this->deductFromWallet($user->id,$request->amount);
                 $newUserData = User::where('id',$user->id)->first();
                 return response()->json($this->FormatResult(['success' => true, 'message' => 'Transfer was successful', 'user'=> $newUserData]), Response::HTTP_OK);
 

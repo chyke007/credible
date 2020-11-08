@@ -233,6 +233,9 @@ export default {
             } else if (row.status == "completed") {
               code = "badge-success";
               statusText = "completed";
+            } else if (row.status == "failed") {
+              code = "badge-danger";
+              statusText = "failed";
             }
             return `<span class="badge badge-pill ${code}">${statusText}</span>`;
           },
@@ -256,7 +259,7 @@ export default {
           name: "updatedAt",
           th: "Transferred at",
           render(row, cell, index) {
-            if (row.status == "pending") {
+            if (row.status == "pending" || row.status == "failed") {
               return "----";
             }
             return moment(row.updatedAt).format("DD-MM-YYYY: h:mm:ss");
