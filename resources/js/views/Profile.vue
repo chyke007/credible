@@ -137,15 +137,14 @@
                                 <button
                                     type="submit"
                                     :disabled="loading"
-                                    class="btn green font-16"
+                                    class="btn btn-primary my-1"
                                     :style="{
                                         cursor: loading
                                             ? 'not-allowed'
                                             : 'pointer'
                                     }"
                                 >
-                                    <i class="feather icon-save mr-2"></i
-                                    >{{ profilePlaceholder }}
+                                    {{ profilePlaceholder }}
                                 </button>
                             </form>
                         </div>

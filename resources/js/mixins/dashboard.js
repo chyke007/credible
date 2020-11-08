@@ -8,8 +8,10 @@ export const dashboard = {
             preVal: 0,
             loading: false,
             profilePlaceholder: "UPDATE",
-            manualPlaceholder: "SUBSCRIBE USER",
+            instantTransferPlaceholder: "Transfer now",
+            futureTransferPlaceholder: "Schedule now",
             URL: `${appUrl}`,
+            TRANSFERURL: `${appUrl}/transfer/`,
             PROFILEURL: `${appUrl}/user/`
         };
     },
@@ -34,10 +36,14 @@ export const dashboard = {
         showLoader() {
             this.loading = true;
             this.profilePlaceholder = "Loading ... Please wait.";
+            this.instantTransferPlaceholder = "Loading ... Please wait.";
+            this.futureTransferPlaceholder = "Loading ... Please wait.";
         },
         hideLoader() {
             this.loading = false;
             this.profilePlaceholder = "UPDATE";
+            this.instantTransferPlaceholder = "Transfer now";
+            this.futureTransferPlaceholder = "Schedule now";
         },
         formatMoney(amount, decimalCount = 2, decimal = ".", thousands = ",") {
             try {
@@ -83,7 +89,10 @@ export const dashboard = {
             }).catch(err => {
                 this.hideLoader();
 
-                if (err.response.status == 402) {
+                if (
+                    err.response.status == 401 &&
+                    err.response.message == "Unauthenticated."
+                ) {
                     this.set_user_token_ac(null);
                     this.$router.push("/login");
                     return this.$toastr.e(
@@ -93,7 +102,7 @@ export const dashboard = {
                 }
                 try {
                     return this.$toastr.e(
-                        err.response.data.error.message,
+                        err.response.data.errors.message,
                         "Error"
                     );
                 } catch (e) {
