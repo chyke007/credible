@@ -12,7 +12,6 @@ before_script:
 script:
   - mkdir -p build/logs
   - vendor/bin/phpunit -c phpunit.xml
-  - vendor/bin/php-coveralls
 after_success:
   - travis_retry php vendor/bin/php-coveralls
   # or enable logging
