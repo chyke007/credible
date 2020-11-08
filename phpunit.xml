@@ -24,6 +24,7 @@
     </filter>
     <logging>
       <log type="coverage-html" target="tests/coverage" showUncoveredFiles="true" />
+      <log type="coverage-clover" target="build/logs/clover.xml"/>
    </logging>
     <php>
         <env name="APP_ENV" value="testing"/>

@@ -5,8 +5,14 @@ php:
 os: linux
 
 before_script:
+  - composer require php-coveralls/php-coveralls:^1.1
   - composer install
   - cp .env.example .env
   - php artisan key:generate
 script:
-  - vendor/bin/phpunit
+  - mkdir -p build/logs
+  - vendor/bin/phpunit -c phpunit.xml
+after_success:
+  - travis_retry vendor/bin/php-coveralls
+  # or enable logging
+  - travis_retry vendor/bin/php-coveralls -v
