@@ -7,6 +7,7 @@ import Register from "@/js/views/Register";
 
 //Secured routes
 import Dashboard from "@/js/views/Dashboard";
+import AllTransfer from "@/js/views/AllTransfer";
 import Transfer from "@/js/views/Transfer";
 import Profile from "@/js/views/Profile";
 import Approve from "@/js/views/Approve";
@@ -62,7 +63,17 @@ const router = new VueRouter({
             name: "transfer",
             component: Transfer,
             meta: {
-                auth: true
+                auth: true,
+                requiresUser: true
+            }
+        },
+        {
+            path: "/alltransfer",
+            name: "alltransfer",
+            component: AllTransfer,
+            meta: {
+                auth: true,
+                requiresAdmin: true
             }
         },
         {

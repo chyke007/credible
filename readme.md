@@ -28,7 +28,7 @@ composer install
 # Run Migrations
 php artisan migrate
 
-# Import Articles
+# Import values
 php artisan db:seed
 
 # If you get an error about an encryption key
@@ -53,6 +53,16 @@ npm run prod -- in production
 
 # Serve application
 php artisan serve
+
+```
+
+### Default users
+
+Kindly find below the default admin and user account
+
+```
+Admin: (email: 'admin@credpal.com', password:'credpal')
+User: (email: 'user@credpal.com', password:'credpal')
 
 ```
 
