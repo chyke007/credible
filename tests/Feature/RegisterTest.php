@@ -12,6 +12,22 @@ class RegisterTest extends TestCase
     public $first_name = 'ddddddddddddddddddddddddddddddddddddddddddddddddddddd';
     public $last_name = 'ddddddddddddddddddddddddddddddddddddddddddddddddddddd';
     public $password = 'ddddddddddddddddddddddddddddddddddddddddddddddddddddd';
+
+    public function setUp()
+    {
+        parent::setUp();
+        Artisan::call('migrate', [
+            '--env'  => 'testing',
+           "--database" => "sqlite"
+        ]);
+        Artisan::call('db:seed');
+    }
+
+    public function tearDown()
+    {
+        Artisan::call('migrate:reset');
+        parent::tearDown();
+    }
     /**
      * A basic feature test example.
      *
