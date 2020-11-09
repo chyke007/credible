@@ -191,8 +191,8 @@ class RegisterTest extends TestCase
         
                 $response = $this->withHeaders([
                     'Accept' => 'application/json',
-                ])->json('POST', '/api/login', ['email' => 'Sally2@test.com', 'password'=> 'credpal']);
-                   
+                ])->json('POST', '/api/login', 
+                ['email' => 'Sally2@test.com', 'password'=> 'credpal']);
                 $this->assertEquals($response->json()['data']['user']['wallet'], 1000);
     }
 
