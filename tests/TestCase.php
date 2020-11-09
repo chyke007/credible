@@ -15,7 +15,7 @@ abstract class TestCase extends BaseTestCase
     {
         parent::setUp();
         \Artisan::call('passport:install',['-vvv' => true]);
-        // \Artisan::call('transfer:cron',['-vvv' => true]);
+        \Artisan::call('transfer:cron',['-vvv' => true]);
     
         $this->seed();
     }
