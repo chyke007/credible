@@ -50,15 +50,6 @@ class TransferController extends Controller
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -108,50 +99,6 @@ class TransferController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Transfer  $transfer
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Transfer $transfer)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Transfer  $transfer
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Transfer $transfer)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Transfer  $transfer
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Transfer $transfer)
-    {
-        //crom job finds transfers and update status and then deducts from wallet
-        // $this->deductFromWallet($user,amount);
-                
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Transfer  $transfer
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Transfer $transfer)
-    {
-        //
-    }
 }

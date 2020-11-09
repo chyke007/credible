@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'user@credpal.com',
             'password' => bcrypt('credpal'),
             'referral_code' => Str::random(6),
-            'wallet' => 50000,
+            'wallet' => 40000,
             'identity' => '',
             'accountNumber' => '30484993043',
             'accountName'=>'CredPal limited',
