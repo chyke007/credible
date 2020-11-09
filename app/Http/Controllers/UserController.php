@@ -24,7 +24,7 @@ class UserController extends Controller
         if($request->user()->role_id != 1){
             return response()->json($this->FormatResult([
                 'message' => 'you are not permitted to access this route',
-                'code' => 413
+                'code' => 403
             ],true), Response::HTTP_FORBIDDEN);
         }
         $user = User::where('identity', '<>', '')->latest()->get();
@@ -81,7 +81,7 @@ class UserController extends Controller
         }else{
             return response()->json($this->FormatResult([
                 'message' => 'you are not permitted to access this route',
-                'code' => 413
+                'code' => 403
             ],true), Response::HTTP_FORBIDDEN);
             
         }
@@ -116,7 +116,7 @@ class UserController extends Controller
         if($request->user()->role_id != 1){
             return response()->json($this->FormatResult([
                 'message' => 'you are not permitted to access this route',
-                'code' => 413
+                'code' => 403
             ],true), Response::HTTP_FORBIDDEN);
         }
         $user ->update([
@@ -130,48 +130,6 @@ class UserController extends Controller
         ]),Response::HTTP_OK);
        }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(User $user)
-    {
-        if($user->id == 1 ){
-            return response([
-                "error" => "Superadmin cannot be deleted"
-            ],Response::HTTP_FORBIDDEN);
-        }
-        Storage::disk('public')->delete($user->image);
-        $user->delete();
-        return response([
-            "success" => "User successfully deleted"
-        ],Response::HTTP_NO_CONTENT);
-    }
-
-
-    public function makeAdmin(Request $request)
-    {
-        $user = User::findorfail($request->input('id'));
-        $user->update([
-            "admin_right" =>true
-        ]);
-        return response([
-            "success" => true,
-            "message" => 'Admin right added'
-        ],Response::HTTP_OK);
-    }
-
-    public function revokeAdmin(Request $request)
-    {
-        $user = User::findorfail($request->input('id'));
-        $user->update([
-            "admin_right" =>false
-        ]);
-        return response([
-            "success" => true,
-            "message" => 'Admin right revoked'
-        ],Response::HTTP_OK);
-    }
+    
+    
 }
