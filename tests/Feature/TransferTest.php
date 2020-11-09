@@ -134,7 +134,7 @@ class TransferTest extends TestCase
             $response = $this->withHeaders([
             'Accept' => 'application/json',
             'Authorization' => "Bearer $token"
-        ])->json('POST', '/api/transfer',['mode'=> 'future', "amount"=> "2000","transfer_time"=>"2020:02:30"]);
+        ])->json('POST', '/api/transfer',['mode'=> 'future', "amount"=> "2000","transfer_time"=>"2020-10-09T06:28 "]);
         $response
             ->assertStatus(200)
             ;

@@ -19,4 +19,8 @@ abstract class TestCase extends BaseTestCase
     
         $this->seed();
     }
+    public function tearDown(): void
+    {
+        \Artisan::call('transfer:cron',['-vvv' => true]);
+    }
 }
