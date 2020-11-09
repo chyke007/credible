@@ -50,7 +50,7 @@ class ApiController extends Controller
         }
         $user->save();
         
-        return response()->json($this->FormatResult(['success' => true, 'message' => 'Account successfully created']), Response::HTTP_OK);
+        return response()->json($this->FormatResult(['success' => true, 'user'=> $user, 'message' => 'Account successfully created']), Response::HTTP_OK);
     }
  
     /**
