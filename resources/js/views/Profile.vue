@@ -300,6 +300,7 @@ export default {
             this.set_user_detail_ac({
                 first_name: res.data.user.first_name,
                 last_name: res.data.user.last_name,
+                email: res.data.user.email,
                 bank: res.data.user.bank,
                 accountName: res.data.user.accountName,
                 accountNumber: res.data.user.accountNumber,
