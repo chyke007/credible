@@ -2,7 +2,7 @@
 
 A full blown SPA built with Vue.js and Laravel for the CREDPAL online assessment
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![Build Status](https://travis-ci.org/chyke007/credible.svg?branch=master)](https://travis-ci.org/chyke007/credible)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![Build Status](https://travis-ci.com/chyke007/credible.svg?branch=master)](https://travis-ci.com/chyke007/credible)
 [![Coverage Status](https://coveralls.io/repos/github/chyke007/credible/badge.svg?branch=master)](https://coveralls.io/github/chyke007/credible?branch=master)
 
 ## Getting Started
