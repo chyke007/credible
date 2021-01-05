@@ -72,13 +72,12 @@ class LoginTest extends TestCase
             $response
                 ->assertStatus(200)
                 ;
+        
                 $response = $this->withHeaders([
                     'Accept' => 'application/json',
-                    ])->json('POST', '/api/login', 
-                    ['email' => 'Sally2@test.com', 'password'=> 'credpal']);
-                    var_dump($response->json());
-                    $data = $response->json()['data'];
-                $this->assertEquals($data['user']['email'], 'Sally2@test.com');
+                ])->json('POST', '/api/login', 
+                ['email' => 'Sally2@test.com', 'password'=> 'credpal']);
+                $this->assertEquals($response->json()['data']['user']['email'], 'Sally2@test.com');
     }
 
      /**Invalid email credential.
