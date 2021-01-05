@@ -72,7 +72,7 @@ class LoginTest extends TestCase
             $response
                 ->assertStatus(200)
                 ;
-                var_dump($response->json());
+                var_dump($response->json()['data']);
                 $response = $this->withHeaders([
                     'Accept' => 'application/json',
                 ])->json('POST', '/api/login', 
