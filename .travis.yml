@@ -5,7 +5,6 @@ php:
 os: linux
 
 before_script:
-  - pecl install xdebug-2.9.8
   - rm -rf composer.lock
   - composer install
   - cp .env.example .env
